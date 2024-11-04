@@ -22,7 +22,6 @@ class Device(BaseType):
             for effect in effect_and_pre:
                 temp_list = effect.split('.')
                 if effect_and_pre[effect] == '':
-                    # 获得action
                     state = env[temp_list[0]]["env_state"][temp_list[1]]
                     func = getattr(state, temp_list[2], None)
                     func(state,env)
@@ -92,7 +91,6 @@ class Device(BaseType):
             for effect in effect_and_pre:
                 temp_list = effect.split('.')
                 if effect_and_pre[effect] == '':
-                    # 获得action
                     state = env[temp_list[0]]["env_state"][temp_list[1]]
                     func = getattr(state, temp_list[2], None)
                     func(state,env)

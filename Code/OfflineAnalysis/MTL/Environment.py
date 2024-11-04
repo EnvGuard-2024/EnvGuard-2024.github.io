@@ -63,8 +63,6 @@ def getEnvonment():
 
 env = getEnvonment()
 get_dir()
-# print(device_list)
-# print(state_list)
 
 def getEnv():
     return env

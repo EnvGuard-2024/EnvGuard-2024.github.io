@@ -14,7 +14,6 @@ class Transition(object):
         self.dst_index = dst_index
 
 class TS(object):
-    # lock = threading.Lock()
     
     def __init__(self, ap_list):
         self.state_list = []
@@ -38,7 +37,6 @@ class TS(object):
 
 
     def addState(self, state, label):
-        # assert not self.ifStateExists(state)
         assert len(label) == len(self.ap_list)
         self.state_list.append(state)
         self.label_list.append(label)
@@ -55,7 +53,6 @@ class TS(object):
 
     def findAction(self, src_field, dst_field):
         for trans in self.trans_list:
-            # print(self.state_list[trans.src_index].field)
             if self.state_list[trans.src_index].field == src_field and \
                     self.state_list[trans.dst_index].field == dst_field:
                 return trans.act

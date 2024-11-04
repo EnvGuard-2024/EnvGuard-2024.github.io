@@ -73,7 +73,6 @@ def get_all_spaces(driver) -> list[Space]:
                     if d['name'] not in devices:
                         devices[d['name']] = Device(d['name'], d['type'], d['state'])
                     devices[d['name']].add_action(d['action'])
-                    # print(d['action'])
             
             space = Space(space_name, envstates, list(devices.values()))
             spaces.append(space)

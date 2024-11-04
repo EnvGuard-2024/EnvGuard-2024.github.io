@@ -12,7 +12,7 @@ class State(BaseType):
     def _only_one(*nums):
         count = 0
         for num in nums:
-            count += num & 1  # 判断最低位是否为1
+            count += num & 1
             if count > 1:
                 return False
         return count == 1

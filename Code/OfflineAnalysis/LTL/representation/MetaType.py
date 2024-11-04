@@ -42,7 +42,6 @@ class MetaType(type):
 
 class BaseType(metaclass=MetaType):
     def __init__(self):
-        # transforming class attributes into instance attributes
         for key, value in self.__class__.__dict__.items():
             super().__setattr__(key, copy.deepcopy(value))
 
@@ -57,15 +56,6 @@ class BaseType(metaclass=MetaType):
             return self.state_dict[key]
         else:
             return super().__getattribute__(key)
-
-    # def __deepcopy__(self, memo_dict=None):
-    #     if memo_dict is None:
-    #         memo_dict = dict()
-    #     cls = self.__class__
-    #     new_one = cls.__new__(cls)
-    #     for key, value in super(BaseType, self).__getattribute__('__dict__').items():
-    #         super(cls, new_one).__setattr__(key, copy.deepcopy(value))
-    #     return new_one
 
     def lengthOfStates(self):
         return len(self.state_dict)

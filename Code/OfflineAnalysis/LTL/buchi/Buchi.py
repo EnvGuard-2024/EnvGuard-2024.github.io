@@ -172,13 +172,11 @@ class BaseBuchi(object):
                 print('\ts%d -> s%d [label=\"%s\"]' %
                       (edge.src, edge.dst, fix_ap))
             else:
-                # ugly fix, there is '"' when "@" appears
                 fix_ap = edge.ap.replace('"', '')
                 print('\ts%d -> s%d [label=\"%s\"]' %
                       (edge.src, edge.dst, fix_ap))
         print('}')
 
-    # 将广义布吉自动机（Generalized Buchi Automaton）以Graphviz格式写入到文件中
     def writeToGv(self, filename, group=None, only_action=False):
         with open(filename, 'w') as fp:
             stdout = sys.stdout
@@ -268,25 +266,6 @@ class BaseBuchi(object):
             df.iat[index, 2] = solve_dict[df.iat[index, 2]]
         df.to_excel('./result/state_action.xlsx')
 
-
-
-# def _getAction(ts, index_src, index_dst):
-#     label_list = ts.label_list
-#     ap_list = ts.ap_list
-#     record_exp_list = []
-#     tran = [t for t in ts.trans_list if t.src_index == index_src and t.dst_index == index_dst]
-#     assert len(tran) == 1
-#     description = tran[0].act
-#     action_str = ' & '.join([record_exp if _recordSatisfy(description, record_exp) else '!' + record_exp
-#                                  for record_exp in record_exp_list])
-#     label = list()
-#     for index, ap in enumerate(ap_list):
-#         entry = ap if label_list[index_src][index] == '1' else '!' + ap
-#         label.append(entry)
-#     ap = ' & '.join(label)
-#     if action_str:
-#         ap = ap + ' & %s' % action_str
-#     return (ap, tran[0].act)
 
 class Buchi(BaseBuchi):
     ''' In this class, State().acc store 1 (for acceptance states) or 0 (for non-acceptance states) '''

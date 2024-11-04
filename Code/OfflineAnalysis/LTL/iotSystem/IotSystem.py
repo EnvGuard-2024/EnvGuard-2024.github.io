@@ -94,7 +94,6 @@ def _apply_action(space_dict, action, act_type, env):
     return temp
 
 class IoTSystem(object):
-    # lock = threading.Lock()
 
     def __init__(self, environment):
         self.transition_system = None
